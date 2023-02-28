@@ -21,6 +21,13 @@
             "name": "Browser",
             "description": "The browser that will be used",
             "default_value": "firefox"
+        },
+        {
+            "id": "ng",
+            "type": "text",
+            "name": "Browser search engine",
+            "description": "Set search engine. Empty for none",
+            "default_value": ""
         }
     ]
 }

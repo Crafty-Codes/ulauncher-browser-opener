@@ -42,7 +42,14 @@ class RunCommand(EventListener):
         data = event.get_data()
         
         browser = extension.preferences["br"]
+        engine = extension.preferences["ng"]
         arg = data["arg"]
+
+        if engine != None:
+            tmp = arg
+            tmp = tmp.replace("+","%2B")
+            tmp = tmp.replace(" ","+")
+            arg = engine+tmp
 
         subprocess.run( [f'{browser} "{arg}"'], shell=True )
 
