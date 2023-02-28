@@ -10,7 +10,7 @@ from ulauncher.api.shared.action.HideWindowAction import HideWindowAction
 import subprocess
 from os import environ
 
-class Terminal_Runner(Extension):
+class Browser_Runner(Extension):
 
     def __init__(self):
         super().__init__()
@@ -22,22 +22,16 @@ class KeywordQueryEventListener(EventListener):
 
     def on_event(self, event, extension):
 
-        command = event.get_argument()
-
-        iconStyle = extension.preferences["icon"]
-
-        if iconStyle == "black": optionIcon = "images/icon.png"
-        if iconStyle == "white": optionIcon = "images/icon-white.png"
-
-        if command == None: 
-
-            command = ""
+        arg = event.get_argument()
+    
+        if arg == None: 
+            arg = ""
 
 
-        data = { "command": command }
+        data = { "arg": arg }
 
-        return RenderResultListAction([ExtensionResultItem(icon=optionIcon,
-                                                           name="Run %s" %command,
+        return RenderResultListAction([ExtensionResultItem(icon="images/icon.png",
+                                                           name="Search %s" %arg,
                                                            on_enter=ExtensionCustomAction(data))])
 
 
@@ -47,18 +41,14 @@ class RunCommand(EventListener):
 
         data = event.get_data()
         
-        terminal = extension.preferences["term"]
-        exec = extension.preferences["exec"]
-        command = data["command"]
+        browser = extension.preferences["br"]
+        arg = data["arg"]
 
-        userShell = environ["SHELL"]
-
-
-        subprocess.run( [f'{terminal} {exec} {userShell} -c "{command}; {userShell}"'], shell=True )
+        subprocess.run( [f'{browser} "{arg}"'], shell=False )
 
         return HideWindowAction()
 
 
 
 if __name__ == '__main__':
-    Terminal_Runner().run()
+    Browser_Runner().run()

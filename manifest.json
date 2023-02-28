@@ -1,8 +1,8 @@
 {
     "required_api_version": "^2.0.0",
-    "name": "Terminal Runner",
-    "description": "An extension that let's you run commands on a gui terminal",
-    "developer_name": "lighttigerXIV",
+    "name": "Browser Runner",
+    "description": "Open custom browser with parameters",
+    "developer_name": "crafty-codes",
     "icon": "images/icon.png",
     "options": {
         "query_debounce": 0.05
@@ -13,31 +13,14 @@
             "type": "keyword",
             "name": "Run",
             "description": "",
-            "default_value": ">"
+            "default_value": "br"
         },
         {
-            "id": "term",
+            "id": "br",
             "type": "text",
-            "name": "Terminal",
-            "description": "The terminal that will be used",
-            "default_value": "/bin/gnome-terminal"
-        },
-        {
-            "id": "exec",
-            "type": "text",
-            "name": "Executing Parameter",
-            "description": "The parameter your terminal uses to execute commands",
-            "default_value": "--"
-        },
-        {
-            "id": "icon",
-            "type": "select",
-            "name": "Icon style",
-            "default_value": "black",
-            "options": [
-                {"text": "Black icon", "value": "black"},
-                {"text": "White icon", "value": "white"}
-            ]
+            "name": "Browser",
+            "description": "The browser that will be used",
+            "default_value": "firefox"
         }
     ]
 }
