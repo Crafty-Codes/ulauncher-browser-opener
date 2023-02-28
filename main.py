@@ -44,7 +44,7 @@ class RunCommand(EventListener):
         browser = extension.preferences["br"]
         arg = data["arg"]
 
-        subprocess.run( [f'{browser} "{arg}"'], shell=False )
+        subprocess.run( [f'{browser} "{arg}"'], shell=True )
 
         return HideWindowAction()
 
