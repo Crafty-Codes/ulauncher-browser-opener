@@ -46,10 +46,13 @@ class RunCommand(EventListener):
         arg = data["arg"]
 
         if engine != None:
-            tmp = arg
-            tmp = tmp.replace("+","%2B")
-            tmp = tmp.replace(" ","+")
-            arg = engine+tmp
+            if arg[:2] != ">>":
+                tmp = arg
+                tmp = tmp.replace("+","%2B")
+                tmp = tmp.replace(" ","+")
+                arg = engine+tmp
+            else:
+                arg = arg[2:]
 
         subprocess.run( [f'{browser} "{arg}"'], shell=True )
 
